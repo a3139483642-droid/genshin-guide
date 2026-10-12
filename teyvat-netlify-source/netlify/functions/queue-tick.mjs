@@ -1,0 +1,2 @@
+export default async()=>{if(!process.env.URL||!process.env.SETUP_KEY)throw new Error('URL or SETUP_KEY missing');const result=await fetch(process.env.URL+'/.netlify/functions/import-background',{method:'POST',headers:{'Content-Type':'application/json','X-Task-Key':process.env.SETUP_KEY},body:'{}'});if(!result.ok)throw new Error('Failed to trigger import queue');};
+export const config={schedule:'* * * * *'};
